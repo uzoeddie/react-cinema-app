@@ -127,9 +127,6 @@ jobs:
     steps:
       - run: echo "Slack notification"
       - slack/notify:
-          event: 'always'
-          channel: 'cinema-app-circleci'
-          template: ''
           custom: |
             {
               "blocks": [
@@ -181,6 +178,10 @@ jobs:
                 }
               ]
             }
+          event: 'always'
+          channel: 'cinema-app-circleci'
+          template: ''
+
 
 workflows:
   build_and_deploy:
