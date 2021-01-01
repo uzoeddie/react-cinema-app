@@ -163,7 +163,7 @@ jobs:
                     {
                       "type": "mrkdwn",
                       "text": "*Author*:\n$CIRCLE_PROJECT_USERNAME"
-                    },
+                    }
                   ]
                 },
                 {
