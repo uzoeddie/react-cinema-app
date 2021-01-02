@@ -41,6 +41,15 @@ aliases:
         sudo apt-get -y -qq update
         sudo apt-get install -y awscli
         sudo apt-get install -y python-pip python-dev build-essential
+  - &install-aws-cli-for-terraform
+    run:
+      name: Installing AWS CLI
+      working_directory: /infrastructure
+      command: |
+        sudo apt-get -y -qq update
+        sudo apt-get install -y awscli
+        sudo apt-get install -y python-pip python-dev build-essential
+        $(aws ecr get-login-password)
   - &build-project
     run:
       name: Build Project
