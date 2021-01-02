@@ -41,15 +41,6 @@ aliases:
         sudo apt-get -y -qq update
         sudo apt-get install -y awscli
         sudo apt-get install -y python-pip python-dev build-essential
-  - &install-aws-cli-for-terraform
-    run:
-      name: Installing AWS CLI
-      working_directory: /infrastructure
-      command: |
-        sudo apt-get -y -qq update
-        sudo apt-get install -y awscli
-        sudo apt-get install -y python-pip python-dev build-essential
-        $(aws ecr get-login-password)
   - &build-project
     run:
       name: Build Project
@@ -70,7 +61,8 @@ jobs:
       - *save-cache
       - run:
           name: Copy Infrastructure Folder
-          command: cp -r infrastructure artifacts/infrastructure
+          command: |
+            cp -r infrastructure artifacts/infrastructure
       - persist_to_workspace:
           root: ./
           paths:
